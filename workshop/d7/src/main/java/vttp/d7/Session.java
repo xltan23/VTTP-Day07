@@ -27,7 +27,9 @@ public class Session implements Runnable {
             input = input.trim();
 
             if (input.startsWith(SEARCH)) {
+                //Obtain the substring after search
                 input = input.substring(SEARCH.length()).trim();
+                //Returns list of books (String)
                 result = booksDB.search(input);
                 if (result.size() > 0) {
                     printList(result);
@@ -35,8 +37,9 @@ public class Session implements Runnable {
                     System.out.printf("Your search for %s returns no result\n", input);
                 }
             } else if (input.startsWith(COUNT)) {
+                //Obtain the substring after count
                 input = input.substring(COUNT.length()).trim();
-                result = booksDB.search(input);
+                result = booksDB.search2(input);
                 if (result.size() > 0) {
                     System.out.printf("There are %d books with the phrase %s in the title\n", result.size(), input);
                 } else {
